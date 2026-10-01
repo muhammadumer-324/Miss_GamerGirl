@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Miss_GamerGirl — Professional Graphic Designer, Video Editor and Animator.">
+  <title>Miss_GamerGirl | Graphic Designer & Animator</title>
+
+  <style>
+    :root {
+      --bg: #08080d;
+      --bg2: #101018;
+      --card: rgba(255,255,255,.055);
+      --text: #f7f7fb;
+      --muted: #aaa9b8;
+      --accent: #b96cff;
+      --accent2: #ff4fd8;
+      --line: rgba(255,255,255,.1);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(185,108,255,.14), transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(255,79,216,.10), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8,8,13,.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: .3s;
+    }
+    header.scrolled { border-color: var(--line); }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+    .nav-links a { transition: .25s; }
+    .nav-links a:hover { color: white; }
+
+    .menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      line-height: .92;
+      letter-spacing: -.07em;
+      max-width: 800px;
+    }
+    h1 .gradient {
+      background: linear-gradient(100deg, #fff, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 28px 0;
+      font-size: 1.08rem;
+    }
+
+    .buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 21px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: .25s;
+    }
+    .btn.primary {
+      background: linear-gradient(100deg, var(--accent), var(--accent2));
+      color: #100812;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-3px); }
+
+    .visual {
+      min-height: 470px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .orb {
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #fff, #d99cff 8%, #a946ff 35%, #311344 70%, transparent 71%);
+      filter: drop-shadow(0 0 70px rgba(185,108,255,.35));
+      animation: float 5s ease-in-out infinite;
+    }
+    .orbit {
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border: 1px solid rgba(185,108,255,.25);
+      border-radius: 50%;
+      transform: rotate(-25deg);
+    }
+    .orbit::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 25px var(--accent2);
+      top: 35px;
+      right: 70px;
+    }
+    .tag {
+      position: absolute;
+      padding: 10px 15px;
+      background: rgba(12,12,20,.8);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      font-size: .8rem;
+      color: #ddd;
+    }
+    .tag.one { top: 45px; right: 15px; }
+    .tag.two { bottom: 65px; left: 10px; }
+    .tag.three { bottom: 15px; right: 65px; }
+
+    @keyframes float {
+      50% { transform: translateY(-16px) scale(1.02); }
+    }
+
+    /* SECTIONS */
+    section { padding: 110px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: .6fr 1.4fr;
+      gap: 50px;
+      margin-bottom: 55px;
+    }
+    .number {
+      color: var(--accent);
+      font-size: .8rem;
+      letter-spacing: .15em;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+    .section-intro { color: var(--muted); max-width: 650px; margin-top: 20px; }
+
+    .about-card {
+      padding: 38px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 25px;
+    }
+    .about-card p { color: #c3c1cc; margin-bottom: 18px; }
+    .tools {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .tool {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #ddd;
+      font-size: .82rem;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    .skill {
+      min-height: 180px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      transition: .3s;
+    }
+    .skill:hover {
+      transform: translateY(-7px);
+      border-color: rgba(185,108,255,.55);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .icon {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+    }
+    .skill h3 { margin-bottom: 8px; }
+    .skill p { color: var(--muted); font-size: .9rem; }
+
+    /* CONTACT */
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+      padding: 50px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255,79,216,.13), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(185,108,255,.13), transparent 30%),
+        var(--card);
+    }
+    .contact-box h2 { max-width: 650px; }
+    .contact-links { display: grid; gap: 12px; }
+    .contact-link {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: #ddd;
+      transition: .25s;
+    }
+    .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+    .contact-link small { display: block; color: var(--muted); margin-bottom: 3px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      color: #777684;
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+      .hero-grid, .contact-box, .section-head { grid-template-columns: 1fr; }
+      .visual { min-height: 390px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head { gap: 20px; }
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: rgba(8,8,13,.96);
+        border-bottom: 1px solid var(--line);
+        display: none;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .nav-links.open { display: flex; }
+      .menu { display: block; }
+    }
+
+    @media (max-width: 520px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-card, .contact-box { padding: 25px; }
+      .orb { width: 250px; height: 250px; }
+      .orbit { width: 315px; height: 315px; }
+      h1 { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header id="header">
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">Miss_<span>GamerGirl</span></a>
+
+      <button class="menu" id="menu" aria-label="Open menu">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Graphic Designer • Video Editor • Animator</div>
+        <h1>Hi, I'm <span class="gradient">GamerGirl.</span></h1>
+        <p>
+          I create modern, creative and visually engaging designs for brands,
+          businesses and social media. I turn ideas into visuals that communicate
+          clearly and make an impact.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#contact">Let's Work Together</a>
+          <a class="btn" href="#about">Explore My Work</a>
+        </div>
+      </div>
+
+      <div class="visual reveal">
+        <div class="orbit"></div>
+        <div class="orb"></div>
+        <div class="tag one">✦ Creative Design</div>
+        <div class="tag two">◉ Visual Storytelling</div>
+        <div class="tag three">＋ Motion & Art</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="number">01 — ABOUT</div>
+        <div>
+          <h2>A designer who loves creating.</h2>
+          <p class="section-intro">
+            I'm a passionate Graphic Designer and Freelancer focused on building
+            clean, creative and effective visual experiences.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-card reveal">
+        <p>
+          I developed my skills in graphic design, visual communication and creative production.
+        </p>
+        <p>
+          I have hands-on experience creating social media posts, promotional graphics,
+          branding materials, advertisements, thumbnails, overlays, emotes, gaming assets
+          and other digital content.
+        </p>
+        <p>
+          I work with professional tools including <strong>Adobe Photoshop, Illustrator,
+          Lightroom, Premiere Pro, After Effects, CorelDRAW and InDesign.</strong>
+        </p>
+        <p>
+          As a digital artist, I continue to improve through personal projects, client work
+          and consistent practice. My goal is to build a strong career in graphic design
+          while creating meaningful visual experiences for clients and brands.
+        </p>
+
+        <div class="tools">
+          <span class="tool">Photoshop</span>
+          <span class="tool">Illustrator</span>
+          <span class="tool">Lightroom</span>
+          <span class="tool">Premiere Pro</span>
+          <span class="tool">After Effects</span>
+          <span class="tool">CorelDRAW</span>
+          <span class="tool">InDesign</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="number">02 — SKILLS</div>
+        <div>
+          <h2>What I can do.</h2>
+          <p class="section-intro">
+            My skills combine creative thinking, visual design and practical experience
+            with professional design software.
+          </p>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill reveal">
+          <div class="icon">✦</div>
+          <h3>Branding & Logos</h3>
+          <p>Distinctive visual identities, logos and branding materials.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">◈</div>
+          <h3>Overlays & Panels</h3>
+          <p>Custom gaming overlays, panels and stream graphics.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">✧</div>
+          <h3>Anime & Character Art</h3>
+          <p>Creative anime-inspired visuals, illustrations and character artwork.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">♡</div>
+          <h3>Emotes</h3>
+          <p>Fun and expressive custom emotes for communities and creators.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">▣</div>
+          <h3>Social Media Design</h3>
+          <p>Posts, promotional graphics, advertisements and thumbnails.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">✎</div>
+          <h3>Illustration</h3>
+          <p>Digital artwork designed around your idea, style and audience.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">▶</div>
+          <h3>Video Editing</h3>
+          <p>Creative edits, social content and polished visual storytelling.</p>
+        </article>
+
+        <article class="skill reveal">
+          <div class="icon">⌁</div>
+          <h3>Animation</h3>
+          <p>Motion graphics and animated visuals that bring designs to life.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div>
+          <div class="number">03 — CONTACT</div>
+          <h2 style="margin-top:18px;">Have an idea?<br><span class="gradient">Let's create it.</span></h2>
+          <p class="section-intro">
+            Available for freelance design, gaming graphics, social media content,
+            video editing and creative projects.
+          </p>
+        </div>
+
+        <div class="contact-links">
+          <a class="contact-link" href="https://discord.com/" target="_blank" rel="noopener">
+            <small>Discord</small>
+            miss_kathy_eva
+          </a>
+          <a class="contact-link" href="https://twitter.com/" target="_blank" rel="noopener">
+            <small>Twitter / X</small>
+            @gamergirl_she
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Miss_GamerGirl. Designed with creativity.
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById("header");
+  const menu = document.getElementById("menu");
+  const navLinks = document.getElementById("navLinks");
+
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 20);
+  });
+
+  menu.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
